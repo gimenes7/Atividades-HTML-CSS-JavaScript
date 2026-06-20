@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <title>5 Imagens</title>
+
+    <style>
+      .container {
+        display: flex;
+        gap: 10px;
+      }
+
+      .container img {
+        width: 100px;
+        height: 100px;
+      }
+
+      /* Celular*/
+      @media screen and (max-width: 480px) {
+        .container {
+          flex-direction: column;
+        }
+      }
+
+      /* Tablet*/
+      @media screen and (min-width: 481px) and (max-width: 800px) {
+        .container {
+          flex-direction: column-reverse;
+        }
+      }
+
+      /*Desktop*/
+      @media screen and (min-width: 801px) {
+        .container {
+          flex-direction: row;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <img src="../imagens/a1a38a5d-ba0c-43a0-b29d-8007e1f6ea93.jpg" />
+      <img src="../imagens/arias-gol-fluminense-flamengo-e1729211663703.webp" />
+      <img
+        src="../imagens/camisa-torcedor-of1-2025-63318-1.jpg-removebg-preview.png"
+      />
+      <img
+        src="../imagens/Fluminense-Aparecidense-Copa-Brasil-e1747873707798.webp"
+      />
+      <img src="../imagens/Ganso-Fluminense-2025.jpg" />
+    </div>
+  </body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>4 Imagens</title>
+
+<style>
+.container {
+    display: flex;
+    gap: 10px;
+}
+
+.container img {
+    width: 120px;
+    height: 120px;
+}
+
+/* Tela em pé */
+@media screen and (orientation: portrait) {
+    .container {
+        flex-direction: column;
+    }
+}
+
+/* Tela deitada */
+@media screen and (orientation: landscape) {
+    .container {
+        flex-direction: row;
+    }
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+    <img src="../imagens/a1a38a5d-ba0c-43a0-b29d-8007e1f6ea93.jpg">
+    <img src="../imagens/arias-gol-fluminense-flamengo-e1729211663703.webp">
+    <img src="../imagens/camisa-torcedor-of1-2025-63318-1.jpg-removebg-preview.png">
+    <img src="../imagens/Ganso-Fluminense-2025.jpg">
+</div>
+</body>
+</html>
