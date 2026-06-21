@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        var num = parseInt(prompt("Digite um número de 1 a 12:"));
+        var mes = "";
+
+        if (num === 1) mes = "Janeiro";
+        if (num === 2) mes = "Fevereiro";
+        if (num === 3) mes = "Março";
+        if (num === 4) mes = "Abril";
+        if (num === 5) mes = "Maio";
+        if (num === 6) mes = "Junho";
+        if (num === 7) mes = "Julho";
+        if (num === 8) mes = "Agosto";
+        if (num === 9) mes = "Setembro";
+        if (num === 10) mes = "Outubro";
+        if (num === 11) mes = "Novembro";
+        if (num === 12) mes = "Dezembro";
+        if (num < 1 || num > 12) mes = "Número inválido!";
+
+        alert("Mês: " + mes);
+
+    </script>
+</body>
+
+</html>

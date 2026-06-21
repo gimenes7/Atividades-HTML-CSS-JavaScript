@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <title>9 - Desafio: Cadastro com Validação de Senha</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 450px;
+      margin: 50px auto;
+      text-align: center;
+    }
+
+    .campo {
+      margin-bottom: 15px;
+      text-align: left;
+    }
+
+    input {
+      padding: 8px;
+      font-size: 16px;
+      width: 250px;
+    }
+
+    ul {
+      text-align: left;
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      margin-bottom: 5px;
+    }
+
+    .ok {
+      color: green;
+    }
+
+    .erro {
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h2>Cadastro</h2>
+
+  <div class="campo">
+    <label>Nome completo: <br><input type="text" id="inputNome"></label>
+  </div>
+
+  <div class="campo">
+    <label>CPF (somente números): <br><input type="text" id="inputCpf" maxlength="11"></label>
+  </div>
+
+  <div class="campo">
+    <label>Senha: <br><input type="password" id="inputSenha"></label>
+  </div>
+
+  <ul>
+    <li id="reqNumero">⬜ Pelo menos 1 número</li>
+    <li id="reqMaiuscula">⬜ Pelo menos 1 letra maiúscula</li>
+    <li id="reqMinuscula">⬜ Pelo menos 1 letra minúscula</li>
+    <li id="reqEspecial">⬜ Pelo menos 1 caractere especial (@ # $ % & *)</li>
+    <li id="reqTamanho">⬜ Pelo menos 8 dígitos</li>
+    <li id="reqEspaco">⬜ Não pode conter espaço</li>
+    <li id="reqSeqNum">⬜ Não pode conter sequência numérica (ex: 123, 12345678)</li>
+    <li id="reqSeqAlfa">⬜ Não pode conter sequência alfabética (ex: abc, fgh)</li>
+    <li id="reqNome">⬜ Não pode conter o nome digitado</li>
+    <li id="reqCpf">⬜ Não pode ser igual ou começar com o CPF digitado</li>
+  </ul>
+
+  <script>
+    const inputNome = document.getElementById("inputNome");
+    const inputCpf = document.getElementById("inputCpf");
+    const inputSenha = document.getElementById("inputSenha");
+
+    const reqNumero = document.getElementById("reqNumero");
+    const reqMaiuscula = document.getElementById("reqMaiuscula");
+    const reqMinuscula = document.getElementById("reqMinuscula");
+    const reqEspecial = document.getElementById("reqEspecial");
+    const reqTamanho = document.getElementById("reqTamanho");
+    const reqEspaco = document.getElementById("reqEspaco");
+    const reqSeqNum = document.getElementById("reqSeqNum");
+    const reqSeqAlfa = document.getElementById("reqSeqAlfa");
+    const reqNome = document.getElementById("reqNome");
+    const reqCpf = document.getElementById("reqCpf");
+
+    function atualizarItem(elemento, valido, texto) {
+      if (valido) {
+        elemento.innerHTML = "✅ " + texto;
+        elemento.className = "ok";
+      } else {
+        elemento.innerHTML = "⬜ " + texto;
+        elemento.className = "erro";
+      }
+    }
+
+    // Permite apenas números no CPF
+    inputCpf.addEventListener("input", function () {
+      let numeros = "";
+      for (let i = 0; i < inputCpf.value.length; i++) {
+        const caractere = inputCpf.value[i];
+        if (caractere >= "0" && caractere <= "9") {
+          numeros += caractere;
+        }
+      }
+      inputCpf.value = numeros;
+    });
+
+    // Verifica se a senha contém alguma sequência de 3 números seguidos crescentes (ex: 123, 456)
+    function temSequenciaNumerica(senha) {
+      for (let i = 0; i < senha.length - 2; i++) {
+        const c1 = senha.charCodeAt(i);
+        const c2 = senha.charCodeAt(i + 1);
+        const c3 = senha.charCodeAt(i + 2);
+
+        const sao3Numeros =
+          senha[i] >= "0" && senha[i] <= "9" &&
+          senha[i + 1] >= "0" && senha[i + 1] <= "9" &&
+          senha[i + 2] >= "0" && senha[i + 2] <= "9";
+
+        if (sao3Numeros && c2 === c1 + 1 && c3 === c2 + 1) {
+          return true;
+        }
+      }
+      return false;
+    }
+
+    // Verifica se a senha contém alguma sequência de 3 letras seguidas crescentes (ex: abc, fgh)
+    function temSequenciaAlfabetica(senha) {
+      const senhaMinuscula = senha.toLowerCase();
+
+      for (let i = 0; i < senhaMinuscula.length - 2; i++) {
+        const c1 = senhaMinuscula.charCodeAt(i);
+        const c2 = senhaMinuscula.charCodeAt(i + 1);
+        const c3 = senhaMinuscula.charCodeAt(i + 2);
+
+        const sao3Letras =
+          senhaMinuscula[i] >= "a" && senhaMinuscula[i] <= "z" &&
+          senhaMinuscula[i + 1] >= "a" && senhaMinuscula[i + 1] <= "z" &&
+          senhaMinuscula[i + 2] >= "a" && senhaMinuscula[i + 2] <= "z";
+
+        if (sao3Letras && c2 === c1 + 1 && c3 === c2 + 1) {
+          return true;
+        }
+      }
+      return false;
+    }
+
+    // Verifica se a senha contém o nome digitado (ou parte significativa dele)
+    function contemNome(senha, nome) {
+      if (nome.trim() === "") {
+        return false;
+      }
+
+      const senhaMinuscula = senha.toLowerCase();
+      const partesNome = nome.toLowerCase().split(" ");
+
+      for (let i = 0; i < partesNome.length; i++) {
+        const parte = partesNome[i];
+        if (parte.length >= 3 && senhaMinuscula.includes(parte)) {
+          return true;
+        }
+      }
+      return false;
+    }
+
+    function validarSenha() {
+      const senha = inputSenha.value;
+      const nome = inputNome.value;
+      const cpf = inputCpf.value;
+
+      const temNumero = /[0-9]/.test(senha);
+      const temMaiuscula = /[A-Z]/.test(senha);
+      const temMinuscula = /[a-z]/.test(senha);
+      const temEspecial = /[@#$%&*]/.test(senha);
+      const temTamanho = senha.length >= 8;
+      const semEspaco = !senha.includes(" ") && senha !== "";
+      const semSeqNum = !temSequenciaNumerica(senha);
+      const semSeqAlfa = !temSequenciaAlfabetica(senha);
+      const semNome = !contemNome(senha, nome);
+
+      let semCpf = true;
+      if (cpf !== "" && senha !== "") {
+        const senhaComecaComCpf = senha.startsWith(cpf.substring(0, 4));
+        const senhaIgualCpf = senha === cpf;
+        semCpf = !senhaComecaComCpf && !senhaIgualCpf;
+      }
+
+      atualizarItem(reqNumero, temNumero, "Pelo menos 1 número");
+      atualizarItem(reqMaiuscula, temMaiuscula, "Pelo menos 1 letra maiúscula");
+      atualizarItem(reqMinuscula, temMinuscula, "Pelo menos 1 letra minúscula");
+      atualizarItem(reqEspecial, temEspecial, "Pelo menos 1 caractere especial (@ # $ % & *)");
+      atualizarItem(reqTamanho, temTamanho, "Pelo menos 8 dígitos");
+      atualizarItem(reqEspaco, semEspaco, "Não pode conter espaço");
+      atualizarItem(reqSeqNum, semSeqNum, "Não pode conter sequência numérica (ex: 123, 12345678)");
+      atualizarItem(reqSeqAlfa, semSeqAlfa, "Não pode conter sequência alfabética (ex: abc, fgh)");
+      atualizarItem(reqNome, semNome, "Não pode conter o nome digitado");
+      atualizarItem(reqCpf, semCpf, "Não pode ser igual ou começar com o CPF digitado");
+    }
+
+    inputSenha.addEventListener("input", validarSenha);
+    inputNome.addEventListener("input", validarSenha);
+    inputCpf.addEventListener("input", validarSenha);
+  </script>
+
+</body>
+
+</html>

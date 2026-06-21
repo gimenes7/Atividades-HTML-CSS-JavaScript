@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Verificar Vogal</title>
+  <style>
+    body {
+      font-family: Arial;
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    input {
+      padding: 10px;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    #mensagem {
+      margin-top: 15px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Digite uma vogal</h2>
+
+  <input type="text" id="letra" maxlength="1">
+  <button onclick="verificar()">Verificar</button>
+
+  <p id="mensagem"></p>
+
+  <script>
+    function verificar() {
+      let input = document.getElementById("letra");
+      let valor = input.value.toLowerCase();
+      let msg = document.getElementById("mensagem");
+
+      if (valor == "a" || valor == "e" || valor == "i" || valor == "o" || valor == "u") {
+        input.style.backgroundColor = "lightgreen";
+        msg.innerHTML = "✔ É uma vogal!";
+        msg.style.color = "green";
+      } else {
+        input.style.backgroundColor = "lightcoral";
+        msg.innerHTML = "❌ Não é uma vogal!";
+        msg.style.color = "red";
+      }
+    }
+  </script>
+
+</body>
+</html>

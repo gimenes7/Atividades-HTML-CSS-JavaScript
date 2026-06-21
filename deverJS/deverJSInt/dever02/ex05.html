@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Validação de Senha</title>
+  <style>
+    body {
+      font-family: Arial;
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    input {
+      padding: 10px;
+      font-size: 16px;
+      border: 2px solid #ccc;
+      border-radius: 5px;
+      width: 250px;
+    }
+
+    #mensagem {
+      margin-top: 15px;
+      text-align: left;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Digite sua senha</h2>
+
+  <input type="password" id="senha" onkeyup="validarSenha()" placeholder="Digite sua senha">
+
+  <div id="mensagem"></div>
+
+  <script>
+    function validarSenha() {
+      let senha = document.getElementById("senha").value;
+      let msg = document.getElementById("mensagem");
+      let input = document.getElementById("senha");
+
+      // Regras
+      let maiuscula = /[A-Z]/.test(senha);
+      let minuscula = /[a-z]/.test(senha);
+      let numero = /[0-9]/.test(senha);
+      let especial = /[^A-Za-z0-9]/.test(senha);
+      let tamanho = senha.length >= 8;
+
+      msg.innerHTML = `
+        ${maiuscula ? "✅" : "❌"} Letra maiúscula <br>
+        ${minuscula ? "✅" : "❌"} Letra minúscula <br>
+        ${numero ? "✅" : "❌"} Número <br>
+        ${especial ? "✅" : "❌"} Caractere especial <br>
+        ${tamanho ? "✅" : "❌"} Mínimo 8 caracteres
+      `;
+
+      // Cor da borda
+      if (maiuscula && minuscula && numero && especial && tamanho) {
+        input.style.borderColor = "green";
+      } else {
+        input.style.borderColor = "red";
+      }
+    }
+  </script>
+
+</body>
+</html>

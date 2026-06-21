@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <title>2 - Média de Notas</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 400px;
+      margin: 50px auto;
+      text-align: center;
+    }
+
+    .campo {
+      margin-bottom: 12px;
+      text-align: left;
+    }
+
+    input {
+      padding: 6px;
+      font-size: 16px;
+      width: 100px;
+      border: 2px solid #ccc;
+    }
+
+    .erro {
+      color: red;
+      font-size: 13px;
+      display: block;
+    }
+
+    button {
+      padding: 8px 16px;
+      font-size: 16px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+
+    #resultado {
+      margin-top: 15px;
+      font-weight: bold;
+      font-size: 18px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h2>Calcular Média de 4 Notas</h2>
+
+  <div class="campo">
+    <label>Nota 1: <input type="text" id="nota1"></label>
+    <span class="erro" id="erro1"></span>
+  </div>
+
+  <div class="campo">
+    <label>Nota 2: <input type="text" id="nota2"></label>
+    <span class="erro" id="erro2"></span>
+  </div>
+
+  <div class="campo">
+    <label>Nota 3: <input type="text" id="nota3"></label>
+    <span class="erro" id="erro3"></span>
+  </div>
+
+  <div class="campo">
+    <label>Nota 4: <input type="text" id="nota4"></label>
+    <span class="erro" id="erro4"></span>
+  </div>
+
+  <button id="btnCalcular">Calcular Média</button>
+
+  <p id="resultado"></p>
+
+  <script>
+    const nota1 = document.getElementById("nota1");
+    const nota2 = document.getElementById("nota2");
+    const nota3 = document.getElementById("nota3");
+    const nota4 = document.getElementById("nota4");
+    const btnCalcular = document.getElementById("btnCalcular");
+    const resultado = document.getElementById("resultado");
+
+    // Função para validar uma nota individual (0 a 100)
+    function validarNota(input, spanErro) {
+      const valor = Number(input.value);
+
+      if (input.value === "" || isNaN(valor) || valor < 0 || valor > 100) {
+        input.style.border = "2px solid red";
+        spanErro.innerHTML = "Digite um valor entre 0 e 100";
+        return false;
+      } else {
+        input.style.border = "2px solid green";
+        spanErro.innerHTML = "";
+        return true;
+      }
+    }
+
+    nota1.addEventListener("input", function () {
+      validarNota(nota1, document.getElementById("erro1"));
+    });
+    nota2.addEventListener("input", function () {
+      validarNota(nota2, document.getElementById("erro2"));
+    });
+    nota3.addEventListener("input", function () {
+      validarNota(nota3, document.getElementById("erro3"));
+    });
+    nota4.addEventListener("input", function () {
+      validarNota(nota4, document.getElementById("erro4"));
+    });
+
+    btnCalcular.addEventListener("click", function () {
+      const valida1 = validarNota(nota1, document.getElementById("erro1"));
+      const valida2 = validarNota(nota2, document.getElementById("erro2"));
+      const valida3 = validarNota(nota3, document.getElementById("erro3"));
+      const valida4 = validarNota(nota4, document.getElementById("erro4"));
+
+      if (valida1 && valida2 && valida3 && valida4) {
+        const soma = Number(nota1.value) + Number(nota2.value) + Number(nota3.value) + Number(nota4.value);
+        const media = soma / 4;
+        resultado.innerHTML = "Média: " + media.toFixed(2);
+        resultado.style.color = "green";
+      } else {
+        resultado.innerHTML = "Corrija as notas inválidas antes de calcular.";
+        resultado.style.color = "red";
+      }
+    });
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Menu Operações</title>
+</head>
+<body>
+    <script>
+        var opcao = parseInt(prompt(
+            "Menu:\n" +
+            "Digite uma das opções abaixo:\n" +
+            "1 - Somar\n" +
+            "2 - Subtrair\n" +
+            "3 - Multiplicar\n" +
+            "4 - Dividir\n" +
+            "5 - Sair"
+        ));
+
+        switch (opcao) {
+            case 1:
+                var n1 = parseInt(prompt("Digite o primeiro número:"));
+                var n2 = parseInt(prompt("Digite o segundo número:"));
+                alert("Resultado da soma: " + (n1 + n2));
+                break;
+
+            case 2:
+                var n1 = parseInt(prompt("Digite o primeiro número:"));
+                var n2 = parseInt(prompt("Digite o segundo número:"));
+                alert("Resultado da subtração: " + (n1 - n2));
+                break;
+
+            case 3:
+                var n1 = parseInt(prompt("Digite o primeiro número:"));
+                var n2 = parseInt(prompt("Digite o segundo número:"));
+                alert("Resultado da multiplicação: " + (n1 * n2));
+                break;
+
+            case 4:
+                var n1 = parseInt(prompt("Digite o primeiro número:"));
+                var n2 = parseInt(prompt("Digite o segundo número:"));
+                if (n2 !== 0) {
+                    alert("Resultado da divisão: " + (n1 / n2));
+                } else {
+                    alert("Erro: divisão por zero não é permitida!");
+                }
+                break;
+
+            case 5:
+                alert("Saindo do programa...");
+                break;
+
+            default:
+                alert("Opção inválida! Tente novamente.");
+        }
+    </script>
+</body>
+</html>

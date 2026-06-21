@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <title>7 - Validar Nome Completo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 400px;
+      margin: 50px auto;
+      text-align: center;
+    }
+
+    input {
+      padding: 8px;
+      font-size: 16px;
+      width: 250px;
+    }
+
+    #mensagem {
+      margin-top: 15px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h2>Digite seu nome completo</h2>
+
+  <input type="text" id="inputNome">
+
+  <p id="mensagem"></p>
+
+  <script>
+    const inputNome = document.getElementById("inputNome");
+    const mensagem = document.getElementById("mensagem");
+
+    // Evento disparado quando o usuário sai da input (perde o foco)
+    inputNome.addEventListener("blur", function () {
+      let nome = inputNome.value;
+
+      // Remove espaços extras no início e no final
+      nome = nome.trim();
+
+      // Remove 2 ou mais espaços seguidos, deixando apenas 1 espaço
+      let nomeCorrigido = "";
+      let espacoAnterior = false;
+
+      for (let i = 0; i < nome.length; i++) {
+        const caractere = nome[i];
+
+        if (caractere === " ") {
+          if (!espacoAnterior) {
+            nomeCorrigido += caractere;
+          }
+          espacoAnterior = true;
+        } else {
+          nomeCorrigido += caractere;
+          espacoAnterior = false;
+        }
+      }
+
+      inputNome.value = nomeCorrigido;
+
+      // Verifica se contém apenas letras e espaços
+      const apenasLetras = /^[A-Za-zÀ-ÿ\s]+$/.test(nomeCorrigido);
+
+      if (nomeCorrigido === "") {
+        mensagem.innerHTML = "Digite um nome.";
+        mensagem.style.color = "red";
+      } else if (apenasLetras) {
+        mensagem.innerHTML = "Nome válido!";
+        mensagem.style.color = "green";
+      } else {
+        mensagem.innerHTML = "Erro: o nome deve conter apenas letras.";
+        mensagem.style.color = "red";
+      }
+    });
+  </script>
+
+</body>
+
+</html>

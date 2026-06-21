@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>6 - Máscara de CPF</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 400px;
+      margin: 50px auto;
+      text-align: center;
+    }
+    input {
+      padding: 8px;
+      font-size: 16px;
+      width: 200px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Digite seu CPF</h2>
+
+  <input type="text" id="inputCpf" maxlength="14" placeholder="000.000.000-00">
+
+  <script>
+    const inputCpf = document.getElementById("inputCpf");
+
+    inputCpf.addEventListener("input", function () {
+      // Remove tudo que não for número
+      let numeros = "";
+      for (let i = 0; i < inputCpf.value.length; i++) {
+        const caractere = inputCpf.value[i];
+        if (caractere >= "0" && caractere <= "9") {
+          numeros += caractere;
+        }
+      }
+
+      // Limita a 11 números (tamanho do CPF)
+      if (numeros.length > 11) {
+        numeros = numeros.substring(0, 11);
+      }
+
+      // Monta o CPF formatado aos poucos, conforme a quantidade de números digitados
+      let cpfFormatado = "";
+
+      for (let i = 0; i < numeros.length; i++) {
+        if (i === 3 || i === 6) {
+          cpfFormatado += ".";
+        }
+        if (i === 9) {
+          cpfFormatado += "-";
+        }
+        cpfFormatado += numeros[i];
+      }
+
+      inputCpf.value = cpfFormatado;
+    });
+  </script>
+
+</body>
+</html>

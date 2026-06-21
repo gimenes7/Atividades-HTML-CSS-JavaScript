@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Atividade 2 – Objetos Aluno</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    h1 { margin-bottom: 10px; }
+    button { padding: 8px 16px; cursor: pointer; margin-bottom: 20px; }
+    .card { border: 1px solid #ccc; border-radius: 6px; padding: 14px; margin-bottom: 12px; width: 300px; }
+    .card h2 { font-size: 1rem; margin-bottom: 8px; }
+    .card p { margin: 4px 0; font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+
+<h1>Atividade 2 — Objetos da classe Aluno</h1>
+<button onclick="cadastrarAlunos()">Cadastrar 3 Alunos</button>
+
+<div id="resultado"></div>
+
+<script>
+  class Aluno {
+    constructor(nome, cpf, telefone, email, cidade) {
+      this.nome     = nome;
+      this.cpf      = cpf;
+      this.telefone = telefone;
+      this.email    = email;
+      this.cidade   = cidade;
+    }
+  }
+
+  function cadastrarAlunos() {
+    let aluno1 = new Aluno(
+      prompt("Aluno 1 — Nome:"),
+      prompt("Aluno 1 — CPF:"),
+      prompt("Aluno 1 — Telefone:"),
+      prompt("Aluno 1 — E-mail:"),
+      prompt("Aluno 1 — Cidade:")
+    );
+
+    let aluno2 = new Aluno(
+      prompt("Aluno 2 — Nome:"),
+      prompt("Aluno 2 — CPF:"),
+      prompt("Aluno 2 — Telefone:"),
+      prompt("Aluno 2 — E-mail:"),
+      prompt("Aluno 2 — Cidade:")
+    );
+
+    let aluno3 = new Aluno(
+      prompt("Aluno 3 — Nome:"),
+      prompt("Aluno 3 — CPF:"),
+      prompt("Aluno 3 — Telefone:"),
+      prompt("Aluno 3 — E-mail:"),
+      prompt("Aluno 3 — Cidade:")
+    );
+
+    console.log(aluno1);
+    console.log(aluno2);
+    console.log(aluno3);
+
+    exibir([aluno1, aluno2, aluno3]);
+  }
+
+  function exibir(alunos) {
+    let div = document.getElementById("resultado");
+    div.innerHTML = "";
+
+    for (let i = 0; i < alunos.length; i++) {
+      let a = alunos[i];
+      div.innerHTML +=
+        '<div class="card">' +
+          '<h2>Aluno ' + (i + 1) + ' — ' + a.nome + '</h2>' +
+          '<p><b>CPF:</b> '      + a.cpf      + '</p>' +
+          '<p><b>Telefone:</b> ' + a.telefone + '</p>' +
+          '<p><b>E-mail:</b> '   + a.email    + '</p>' +
+          '<p><b>Cidade:</b> '   + a.cidade   + '</p>' +
+        '</div>';
+    }
+  }
+</script>
+
+</body>
+</html>

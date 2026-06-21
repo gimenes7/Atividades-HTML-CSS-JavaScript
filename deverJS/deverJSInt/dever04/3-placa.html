@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <title>3 - Validar Placa</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 400px;
+      margin: 50px auto;
+      text-align: center;
+    }
+
+    input {
+      padding: 8px;
+      font-size: 16px;
+      width: 150px;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    button {
+      padding: 8px 16px;
+      font-size: 16px;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+
+    #mensagem {
+      margin-top: 15px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h2>Validar Placa de Carro</h2>
+  <p>Formato: AAA0000</p>
+
+  <input type="text" id="inputPlaca" maxlength="7" placeholder="AAA0000">
+  <button id="btnVerificar">Verificar</button>
+
+  <p id="mensagem"></p>
+
+  <script>
+    const inputPlaca = document.getElementById("inputPlaca");
+    const btnVerificar = document.getElementById("btnVerificar");
+    const mensagem = document.getElementById("mensagem");
+
+    btnVerificar.addEventListener("click", function () {
+      const placa = inputPlaca.value.toUpperCase();
+
+      // Regex: 3 letras seguidas de 4 números
+      const formatoValido = /^[A-Z]{3}[0-9]{4}$/;
+
+      if (formatoValido.test(placa)) {
+        inputPlaca.style.backgroundColor = "lightgreen";
+        mensagem.innerHTML = "Placa no formato correto!";
+        mensagem.style.color = "green";
+      } else {
+        inputPlaca.style.backgroundColor = "salmon";
+        mensagem.innerHTML = "Erro: a placa deve seguir o formato AAA0000.";
+        mensagem.style.color = "red";
+      }
+    });
+  </script>
+
+</body>
+
+</html>

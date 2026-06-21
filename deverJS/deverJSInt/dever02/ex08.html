@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Validar Nome</title>
+  <style>
+    body {
+      font-family: Arial;
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    input {
+      padding: 10px;
+      font-size: 16px;
+      width: 300px;
+      border: 2px solid #ccc;
+      border-radius: 5px;
+    }
+
+    #mensagem {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Digite seu nome completo</h2>
+
+  <input type="text" id="nome" onblur="validarNome()" placeholder="Ex: João Silva">
+
+  <div id="mensagem"></div>
+
+  <script>
+    function validarNome() {
+      let input = document.getElementById("nome");
+      let valor = input.value;
+
+      // remove espaços extras (2 ou mais → 1 só)
+      valor = valor.trim().replace(/\s+/g, " ");
+
+      // atualiza o input com espaços corrigidos
+      input.value = valor;
+
+      let msg = document.getElementById("mensagem");
+
+      // regex: apenas letras (com acento) e espaços
+      let somenteLetras = /^[A-Za-zÀ-ÿ\s]+$/;
+
+      if (valor === "") {
+        msg.innerHTML = "⚠️ Digite um nome!";
+        msg.style.color = "orange";
+        input.style.borderColor = "red";
+        return;
+      }
+
+      if (!somenteLetras.test(valor)) {
+        msg.innerHTML = "❌ O nome deve conter apenas letras!";
+        msg.style.color = "red";
+        input.style.borderColor = "red";
+      } else {
+        msg.innerHTML = "✅ Nome válido!";
+        msg.style.color = "green";
+        input.style.borderColor = "green";
+      }
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <title>5 - Validar Senha Forte</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 400px;
+      margin: 50px auto;
+      text-align: center;
+    }
+
+    input {
+      padding: 8px;
+      font-size: 16px;
+      width: 200px;
+    }
+
+    ul {
+      text-align: left;
+      margin-top: 15px;
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      margin-bottom: 5px;
+    }
+
+    .ok {
+      color: green;
+    }
+
+    .erro {
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h2>Validar Senha</h2>
+
+  <input type="password" id="inputSenha" placeholder="Digite sua senha">
+
+  <ul>
+    <li id="reqNumero">⬜ Pelo menos 1 número</li>
+    <li id="reqMaiuscula">⬜ Pelo menos 1 letra maiúscula</li>
+    <li id="reqMinuscula">⬜ Pelo menos 1 letra minúscula</li>
+    <li id="reqEspecial">⬜ Pelo menos 1 caractere especial</li>
+    <li id="reqTamanho">⬜ Pelo menos 8 dígitos</li>
+  </ul>
+
+  <script>
+    const inputSenha = document.getElementById("inputSenha");
+
+    const reqNumero = document.getElementById("reqNumero");
+    const reqMaiuscula = document.getElementById("reqMaiuscula");
+    const reqMinuscula = document.getElementById("reqMinuscula");
+    const reqEspecial = document.getElementById("reqEspecial");
+    const reqTamanho = document.getElementById("reqTamanho");
+
+    function atualizarItem(elemento, valido, texto) {
+      if (valido) {
+        elemento.innerHTML = "✅ " + texto;
+        elemento.className = "ok";
+      } else {
+        elemento.innerHTML = "⬜ " + texto;
+        elemento.className = "erro";
+      }
+    }
+
+    inputSenha.addEventListener("input", function () {
+      const senha = inputSenha.value;
+
+      const temNumero = /[0-9]/.test(senha);
+      const temMaiuscula = /[A-Z]/.test(senha);
+      const temMinuscula = /[a-z]/.test(senha);
+      const temEspecial = /[^A-Za-z0-9]/.test(senha);
+      const temTamanho = senha.length >= 8;
+
+      atualizarItem(reqNumero, temNumero, "Pelo menos 1 número");
+      atualizarItem(reqMaiuscula, temMaiuscula, "Pelo menos 1 letra maiúscula");
+      atualizarItem(reqMinuscula, temMinuscula, "Pelo menos 1 letra minúscula");
+      atualizarItem(reqEspecial, temEspecial, "Pelo menos 1 caractere especial");
+      atualizarItem(reqTamanho, temTamanho, "Pelo menos 8 dígitos");
+    });
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Atividade 1 – Classes</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    h1 { margin-bottom: 20px; }
+  </style>
+</head>
+<body>
+
+<h1>Atividade 1 — Classes JavaScript</h1>
+
+<script>
+  // 1. Aluno
+  class Aluno {
+    constructor(nome, cpf, telefone, email, cidade) {
+      this.nome     = nome;
+      this.cpf      = cpf;
+      this.telefone = telefone;
+      this.email    = email;
+      this.cidade   = cidade;
+    }
+  }
+
+  // 2. Professor
+  class Professor {
+    constructor(nome, cpf, telefone, email, matricula, salario) {
+      this.nome      = nome;
+      this.cpf       = cpf;
+      this.telefone  = telefone;
+      this.email     = email;
+      this.matricula = matricula;
+      this.salario   = salario;
+    }
+  }
+
+  // 3. Prova
+  class Prova {
+    constructor(disciplina, data, turma, notaMaxima, qtdQuestoes, tipo) {
+      this.disciplina  = disciplina;
+      this.data        = data;
+      this.turma       = turma;
+      this.notaMaxima  = notaMaxima;
+      this.qtdQuestoes = qtdQuestoes;
+      this.tipo        = tipo;
+    }
+  }
+
+  // 4. Atendente
+  class Atendente {
+    constructor(nome, cpf, telefone, email, salario, comissao) {
+      this.nome     = nome;
+      this.cpf      = cpf;
+      this.telefone = telefone;
+      this.email    = email;
+      this.salario  = salario;
+      this.comissao = comissao;
+    }
+  }
+
+  // 5. Médico (6 atributos, 2 funções)
+  class Medico {
+    constructor(nome, crm, especialidade, telefone, email, plantao) {
+      this.nome          = nome;
+      this.crm           = crm;
+      this.especialidade = especialidade;
+      this.telefone      = telefone;
+      this.email         = email;
+      this.plantao       = plantao;
+    }
+
+    receitar(medicamento) {
+      return this.nome + " receitou: " + medicamento;
+    }
+
+    diagnosticar(sintomas) {
+      return "Diagnóstico baseado em: " + sintomas;
+    }
+  }
+
+  // 6. Carro (6 atributos, 4 funções)
+  class Carro {
+    constructor(marca, modelo, ano, cor, placa, combustivel) {
+      this.marca       = marca;
+      this.modelo      = modelo;
+      this.ano         = ano;
+      this.cor         = cor;
+      this.placa       = placa;
+      this.combustivel = combustivel;
+      this.ligado      = false;
+    }
+
+    ligar()              { this.ligado = true;  return "Carro ligado!"; }
+    desligar()           { this.ligado = false; return "Carro desligado!"; }
+    acelerar(velocidade) { return "Acelerando a " + velocidade + " km/h"; }
+    buzinar()            { return "Beep beep!"; }
+  }
+
+  // 7. Avião (6 atributos, 4 funções)
+  class Aviao {
+    constructor(modelo, fabricante, capacidade, autonomia, prefixo, companhia) {
+      this.modelo     = modelo;
+      this.fabricante = fabricante;
+      this.capacidade = capacidade;
+      this.autonomia  = autonomia;
+      this.prefixo    = prefixo;
+      this.companhia  = companhia;
+      this.altitude   = 0;
+    }
+
+    decolar()      { this.altitude = 10000; return "Decolando!"; }
+    pousar()       { this.altitude = 0;     return "Pousando!"; }
+    voar(destino)  { return "Voando para " + destino; }
+    getAltitude()  { return "Altitude atual: " + this.altitude + " metros"; }
+  }
+
+  // Teste no console
+  console.log("Classes carregadas: Aluno, Professor, Prova, Atendente, Medico, Carro, Aviao");
+</script>
+
+<p>As classes estão definidas neste arquivo. Abra o console do navegador (F12) para visualizá-las e testá-las.</p>
+
+</body>
+</html>

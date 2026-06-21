@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Nome Completo</title>
+  <style>
+    body {
+      font-family: Arial;
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    input {
+      padding: 10px;
+      font-size: 16px;
+      width: 300px;
+      border: 2px solid #ccc;
+      border-radius: 5px;
+    }
+
+    #mensagem {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Digite seu nome completo</h2>
+
+  <input type="text" id="nome" onblur="verificarNome()" placeholder="Ex: João Silva Souza">
+
+  <div id="mensagem"></div>
+
+  <script>
+    function verificarNome() {
+      let input = document.getElementById("nome");
+      let valor = input.value.trim();
+      let msg = document.getElementById("mensagem");
+
+      // separa o nome por espaços
+      let partes = valor.split(" ");
+
+      // remove espaços vazios
+      partes = partes.filter(p => p !== "");
+
+      if (partes.length < 2) {
+        input.style.borderColor = "red";
+        msg.innerHTML = "❌ Digite nome e sobrenome!";
+        msg.style.color = "red";
+        return;
+      }
+
+      let primeiroNome = partes[0];
+      let sobrenome = partes[partes.length - 1];
+      let nomeMeio = "";
+
+      if (partes.length > 2) {
+        nomeMeio = partes.slice(1, partes.length - 1).join(" ");
+      }
+
+      input.style.borderColor = "green";
+
+      msg.innerHTML = `
+        ✅ Nome: ${primeiroNome} <br>
+        ${nomeMeio ? "Nome do meio: " + nomeMeio + "<br>" : ""}
+        Sobrenome: ${sobrenome}
+      `;
+      msg.style.color = "green";
+    }
+  </script>
+
+</body>
+</html>

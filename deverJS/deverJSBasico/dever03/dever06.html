@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Operações com 5 números</title>
+</head>
+<body>
+  <script>
+    
+    var n1 = parseFloat(prompt("Digite o 1º número:"));
+    var n2 = parseFloat(prompt("Digite o 2º número:"));
+    var n3 = parseFloat(prompt("Digite o 3º número:"));
+    var n4 = parseFloat(prompt("Digite o 4º número:"));
+    var n5 = parseFloat(prompt("Digite o 5º número:"));
+
+    
+    document.write("1º valor é " + n1 + "<br>");
+    document.write("2º valor é " + n2 + "<br>");
+    document.write("3º valor é " + n3 + "<br>");
+    document.write("4º valor é " + n4 + "<br>");
+    document.write("5º valor é " + n5 + "<br><hr>");
+
+    
+    var opcao = prompt("Escolha uma operação:\n1 - Soma\n2 - Subtração\n3 - Multiplicação");
+
+    switch(opcao) {
+      case "1":
+        var soma = n1 + n2 + n3 + n4 + n5;
+        document.write("Resultado da soma: " + soma);
+        break;
+
+      case "2":
+        var subtracao = n1 - n2 - n3 - n4 - n5;
+        document.write("Resultado da subtração: " + subtracao);
+        break;
+
+      case "3":
+        var multiplicacao = n1 * n2 * n3 * n4 * n5;
+        document.write("Resultado da multiplicação: " + multiplicacao);
+        break;
+
+      default:
+        document.write("Opção inválida!");
+    }
+  </script>
+</body>
+</html>

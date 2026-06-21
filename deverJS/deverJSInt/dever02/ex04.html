@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Confirmar Senha</title>
+  <style>
+    body {
+      font-family: Arial;
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    input {
+      display: block;
+      margin: 10px auto;
+      padding: 10px;
+      font-size: 16px;
+      border: 2px solid #ccc;
+      border-radius: 5px;
+    }
+
+    #mensagem {
+      margin-top: 15px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Digite sua senha</h2>
+
+  <input type="password" id="senha" placeholder="Digite a senha">
+  <input type="password" id="confirmar" placeholder="Confirme a senha" onblur="verificarSenha()">
+
+  <p id="mensagem"></p>
+
+  <script>
+    function verificarSenha() {
+      let senha = document.getElementById("senha").value;
+      let confirmar = document.getElementById("confirmar").value;
+      let msg = document.getElementById("mensagem");
+
+      let input1 = document.getElementById("senha");
+      let input2 = document.getElementById("confirmar");
+
+      if (senha === "" || confirmar === "") {
+        msg.innerHTML = "⚠️ Preencha os dois campos!";
+        msg.style.color = "orange";
+        input1.style.borderColor = "red";
+        input2.style.borderColor = "red";
+      } 
+      else if (senha === confirmar) {
+        msg.innerHTML = "✅ Senhas iguais!";
+        msg.style.color = "green";
+        input1.style.borderColor = "green";
+        input2.style.borderColor = "green";
+      } else {
+        msg.innerHTML = "❌ Senhas diferentes!";
+        msg.style.color = "red";
+        input1.style.borderColor = "red";
+        input2.style.borderColor = "red";
+      }
+    }
+  </script>
+
+</body>
+</html>

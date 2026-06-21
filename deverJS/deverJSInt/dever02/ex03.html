@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Validador de Placa</title>
+  <style>
+    body {
+      font-family: Arial;
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    input {
+      padding: 10px;
+      font-size: 16px;
+      border: 2px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      padding: 10px;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+
+    #mensagem {
+      margin-top: 15px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Digite uma placa (AAA0000)</h2>
+
+  <input type="text" id="placa" placeholder="Ex: ABC1234">
+  <button onclick="validarPlaca()">Verificar</button>
+
+  <p id="mensagem"></p>
+
+  <script>
+    function validarPlaca() {
+      let input = document.getElementById("placa");
+      let valor = input.value.toUpperCase();
+      let msg = document.getElementById("mensagem");
+
+      // Regex: 3 letras + 4 números
+      let padrao = /^[A-Z]{3}[0-9]{4}$/;
+
+      if (padrao.test(valor)) {
+        input.style.borderColor = "green";
+        msg.innerHTML = "✅ Placa válida!";
+        msg.style.color = "green";
+      } else {
+        input.style.borderColor = "red";
+        msg.innerHTML = "❌ Formato inválido! Use AAA0000";
+        msg.style.color = "red";
+      }
+    }
+  </script>
+
+</body>
+</html>

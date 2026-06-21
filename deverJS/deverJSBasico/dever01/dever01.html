@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercícios Interativos</title>
+</head>
+<body>
+    <script>
+        // 1 - Nome completo
+        let nomeCompleto1 = prompt("Digite seu nome completo:", "Arthur Gimenes");
+        alert("Seu nome completo é: " + nomeCompleto1);
+
+        // 2 - Nome + Sobrenome
+        let nome2 = prompt("Digite seu primeiro nome:", "Arthur");
+        let sobrenome2 = prompt("Digite seu sobrenome:", "Gimenes");
+        alert("Nome completo: " + nome2 + " " + sobrenome2);
+
+        // 3 - Área de um triângulo
+        let base = parseFloat(prompt("Digite a base do triângulo:", "10"));
+        let altura = parseFloat(prompt("Digite a altura do triângulo:", "5"));
+        let areaTriangulo = (base * altura) / 2;
+        alert("Área do triângulo: " + areaTriangulo);
+
+        // 4 - Área de um círculo
+        let raio = parseFloat(prompt("Digite o raio do círculo:", "7"));
+        let areaCirculo = 3.14 * (raio * raio);
+        alert("Área do círculo: " + areaCirculo);
+
+        // 5 - Operações com 2 números
+        let num1 = parseInt(prompt("Digite o primeiro número inteiro:", "8"));
+        let num2 = parseInt(prompt("Digite o segundo número inteiro:", "4"));
+        console.log("Soma: " + (num1 + num2));
+        console.log("Subtração: " + (num1 - num2));
+        console.log("Multiplicação: " + (num1 * num2));
+        console.log("Divisão: " + (num1 / num2));
+        console.log("Módulo: " + (num1 % num2));
+
+        // 6 - Soma e média de 4 números
+        let n1 = parseInt(prompt("Digite o primeiro número:", "2"));
+        let n2 = parseInt(prompt("Digite o segundo número:", "4"));
+        let n3 = parseInt(prompt("Digite o terceiro número:", "6"));
+        let n4 = parseInt(prompt("Digite o quarto número:", "8"));
+        let soma4 = n1 + n2 + n3 + n4;
+        let media4 = soma4 / 4;
+        console.log("Soma dos 4 números: " + soma4);
+        console.log("Média: " + media4);
+
+        // 7 - Dados do cliente
+        let nomeCli = prompt("Digite seu nome:", "Arthur");
+        let sobrenomeCli = prompt("Digite seu sobrenome:", "Gimenes");
+        let idade = prompt("Digite sua idade:", "25");
+        let dataNascimento = prompt("Digite sua data de nascimento (dd/mm/aaaa):", "01/01/2000");
+        let rua = prompt("Digite o nome da rua:", "Rua das Flores");
+        let numero = prompt("Digite o número da casa:", "123");
+        let bairro = prompt("Digite o bairro:", "Centro");
+        let cidade = prompt("Digite a cidade:", "São Paulo");
+        let uf = prompt("Digite o estado (UF):", "SP");
+        let email = prompt("Digite seu e-mail:", "arthur@example.com");
+        let telefone = prompt("Digite seu telefone:", "(11) 1234-5678");
+        let celular = prompt("Digite seu celular:", "(11) 98765-4321");
+
+        // Alerts separados
+        alert("Me chamo " + nomeCli + " " + sobrenomeCli);
+        alert("Tenho " + idade + " anos e nasci em " + dataNascimento);
+        alert("Moro na Rua: " + rua + ", nº: " + numero);
+        alert("Bairro: " + bairro + " na cidade: " + cidade + "/" + uf);
+        alert("Meu e-mail é: " + email);
+        alert("Telefone: " + telefone);
+        alert("Celular: " + celular);
+    </script>
+</body>
+</html>

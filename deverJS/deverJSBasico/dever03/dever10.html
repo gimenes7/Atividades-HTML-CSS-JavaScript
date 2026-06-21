@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Vetor de Cidades</title>
+</head>
+<body>
+    <script>
+        var cidades = [
+            prompt("Digite o nome da 1ª cidade:"),
+            prompt("Digite o nome da 2ª cidade:"),
+            prompt("Digite o nome da 3ª cidade:"),
+            prompt("Digite o nome da 4ª cidade:"),
+            prompt("Digite o nome da 5ª cidade:"),
+            prompt("Digite o nome da 6ª cidade:")
+        ];
+
+        console.log("a) Tamanho do vetor: " + cidades.length);
+
+        cidades.length = cidades.length - 1;
+        console.log("b) Após apagar o último elemento: " + cidades);
+
+        cidades[0] = cidades[1];
+        cidades[1] = cidades[2];
+        cidades[2] = cidades[3];
+        cidades[3] = cidades[4];
+        cidades[4] = cidades[5];
+        cidades.length = cidades.length - 1;
+        console.log("c) Após apagar o primeiro elemento: " + cidades);
+
+        var novaCidade = prompt("Digite o nome de uma nova cidade para adicionar no final:");
+        cidades[cidades.length] = novaCidade;
+        console.log("d) Após adicionar uma nova cidade: " + cidades);
+    </script>
+</body>
+</html>

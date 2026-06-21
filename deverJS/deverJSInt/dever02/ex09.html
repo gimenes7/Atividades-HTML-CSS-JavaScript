@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-16">
+  <title>Validação Completa</title>
+  <style>
+    body {
+      font-family: Arial;
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    input {
+      display: block;
+      margin: 10px auto;
+      padding: 10px;
+      font-size: 16px;
+      width: 300px;
+      border: 2px solid #ccc;
+      border-radius: 5px;
+    }
+
+    #mensagem {
+      text-align: left;
+      display: inline-block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Cadastro</h2>
+
+  <input type="text" id="nome" placeholder="Nome completo">
+  <input type="text" id="cpf" placeholder="CPF">
+  <input type="password" id="senha" onkeyup="validarSenha()" placeholder="Digite a senha">
+
+  <div id="mensagem"></div>
+
+  <script>
+    function validarSenha() {
+      let nome = document.getElementById("nome").value.toLowerCase();
+      let cpf = document.getElementById("cpf").value.replace(/\D/g, "");
+      let senha = document.getElementById("senha").value;
+      let msg = document.getElementById("mensagem");
+      let input = document.getElementById("senha");
+
+      let maiuscula = /[A-Z]/.test(senha);
+      let minuscula = /[a-z]/.test(senha);
+      let numero = /[0-9]/.test(senha);
+      let especial = /[@#%&*]/.test(senha);
+      let tamanho = senha.length >= 8;
+      let semEspaco = !/\s/.test(senha);
+
+      let sequenciasNum = ["123","234","345","456","567","678","789","012","1234","12345","12345678"];
+      let temSeqNum = sequenciasNum.some(seq => senha.includes(seq));
+
+      let sequenciasLetra = ["abc","bcd","cde","def","efg","fgh","ghi","abcd","abcde","abcdef"];
+      let temSeqLetra = sequenciasLetra.some(seq => senha.toLowerCase().includes(seq));
+
+      let contemNome = nome && senha.toLowerCase().includes(nome.split(" ")[0]);
+
+      let igualCpf = senha === cpf;
+      let iniciaCpf = cpf && senha.startsWith(cpf.substring(0,3));
+
+      msg.innerHTML = `
+        ${maiuscula ? "✅" : "❌"} Letra maiúscula <br>
+        ${minuscula ? "✅" : "❌"} Letra minúscula <br>
+        ${numero ? "✅" : "❌"} Número <br>
+        ${especial ? "✅" : "❌"} Caractere especial (@#%&*) <br>
+        ${tamanho ? "✅" : "❌"} Mínimo 8 caracteres <br>
+        ${semEspaco ? "✅" : "❌"} Sem espaços <br>
+        ${!temSeqNum ? "✅" : "❌"} Sem sequência numérica <br>
+        ${!temSeqLetra ? "✅" : "❌"} Sem sequência alfabética <br>
+        ${!contemNome ? "✅" : "❌"} Não contém nome <br>
+        ${(!igualCpf && !iniciaCpf) ? "✅" : "❌"} Diferente do CPF
+      `;
+
+      if (
+        maiuscula && minuscula && numero && especial &&
+        tamanho && semEspaco &&
+        !temSeqNum && !temSeqLetra &&
+        !contemNome && !igualCpf && !iniciaCpf
+      ) {
+        input.style.borderColor = "green";
+      } else {
+        input.style.borderColor = "red";
+      }
+    }
+  </script>
+
+</body>
+</html>

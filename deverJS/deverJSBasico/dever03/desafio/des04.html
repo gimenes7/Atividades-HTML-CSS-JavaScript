@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculadora de Idade</title>
+</head>
+<body>
+    <script>
+        var diaNascimento = parseInt(prompt("Digite o dia de nascimento:"));
+        var mesNascimento = parseInt(prompt("Digite o mês de nascimento (1-12):"));
+        var anoNascimento = parseInt(prompt("Digite o ano de nascimento:"));
+
+        var diaAtual = parseInt(prompt("Digite o dia atual:"));
+        var mesAtual = parseInt(prompt("Digite o mês atual (1-12):"));
+        var anoAtual = parseInt(prompt("Digite o ano atual:"));
+
+        var idadeAno = anoAtual - anoNascimento;
+        var idadeMes = mesAtual - mesNascimento;
+        var idadeDia = diaAtual - diaNascimento;
+
+        // Ajuste dos dias
+        var ajusteDia = idadeDia < 0 ? 1 : 0;
+        switch(ajusteDia) {
+            case 1:
+                idadeDia += 30;
+                idadeMes -= 1;
+                break;
+        }
+
+        // Ajuste dos meses
+        var ajusteMes = idadeMes < 0 ? 1 : 0;
+        switch(ajusteMes) {
+            case 1:
+                idadeMes += 12;
+                idadeAno -= 1;
+                break;
+        }
+
+        alert("Idade: " + idadeAno + " anos, " + idadeMes + " meses e " + idadeDia + " dias.");
+    </script>
+</body>
+</html>
