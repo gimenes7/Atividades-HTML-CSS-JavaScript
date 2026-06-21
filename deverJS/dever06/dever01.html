@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+
+        function quadrado() {
+            var n1 = parseInt(prompt("Digite o tamanho do lado do quadrado"));
+            var res = n1 * n1;
+
+            alert("A área do quadrado é " + res);
+        }
+        function triangulo() {
+            var n1 = parseInt(prompt("Digite o tamanho do primeiro lado do triângulo"));
+            var n2 = parseInt(prompt("Digite o tamanho do segundo lado do triângulo"));
+            var n3 = parseInt(prompt("Digite o tamanho do terceiro lado do triângulo"));
+            var res = n1 + n2 + n3;
+
+            alert("O perímetro do triângulo é " + res);
+        }
+        function circulo() {
+            var n1 = parseInt(prompt("Digite o tamanho do raio do círculo"));
+            var res = (n1 * n1) * 3.14;
+
+            alert("A área do círculo é " + res);
+        }
+        function nota() {
+            var n1 = parseInt(prompt("Digite sua primeira nota"));
+            var n2 = parseInt(prompt("Digite sua segunda nota"));
+            var n3 = parseInt(prompt("Digite sua terceira nota"));
+            var n4 = parseInt(prompt("Digite sua quarta nota"));
+
+            var res = (n1 + n2 + n3 + n4) / 4;
+
+            alert("A média é " + res);
+        }
+        function maior() {
+            var n1 = parseInt(prompt("Digite o primeira número"));
+            var n2 = parseInt(prompt("Digite o segunda número"));
+            var n3 = parseInt(prompt("Digite o terceiro número"));
+
+            if (n1 > n2 && n3) {
+                alert("O número " + n1 + "é o maior");
+            } if (n2 > n1 && n3) {
+                alert("O número " + n2 + "é o maior");
+            } else {
+                alert("O número " + n3 + "é o maior");
+            }
+        }
+        function positivo() {
+            var n1 = prompt("Digite um número");
+            switch (n1) {
+                case n1 > 0: {
+                    alert("Seu número é positivo");
+                    break;
+                }
+                case n1 = 0: {
+                    alert("Seu número é nulo");
+                    break;
+                }
+                case n1 > 0: {
+                    alert("Seu número é negativo");
+                    break;
+                }
+                default:
+                    alert("Você não digitou um número")
+                    break;
+            }
+        }
+        function primo() {
+            var p = parseInt(prompt("Digite um número"));
+            var i = 1;
+            var d = 0;
+            while (i <= p) {
+                if (p % i === 0) {
+                    d++;
+                }
+                i++;
+            }
+            if (d == 2) {
+                alert("Seu número é primo")
+            } else {
+                alert("Seu número não é primo")
+            }
+        }
+
+        var op = prompt("Menu:\nDigite uma das opções abaixo:\n1 - Calcular a área de um quadrado\n2 - Calcular o perímetro e um triângulo\n3 - Calcular a área de um círculo\n4 - Calcular a média aritmética de 4 notas\n5 - Para ler 3 números e dizer qual é o maior valor\n6 - Para ler 1 número e verificar se ele é positivo, negativo ou nulo\n7 - Para ler 1 número e verificar se ele é um número primo\n8 - Sair")
+
+        switch (op) {
+            case "1":
+                quadrado()
+                break;
+            case "2":
+                triangulo()
+                break;
+            case "3":
+                circulo()
+                break;
+            case "4":
+                nota()
+                break;
+            case "5":
+                positivo()
+                break;
+            case "6":
+                maior()
+                break;
+            case "7":
+                primo()
+                break;
+            case "8":
+                alert("Você saiu do programa")
+                break;
+            default:
+                alert("Opção inválida")
+                break;
+        }
+    </script>
+</body>
+
+</html>

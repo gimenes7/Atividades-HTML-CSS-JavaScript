@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício com Funções e Argumentos</title>
+</head>
+
+<body>
+
+    <script>
+
+        // Função 1 - Área do quadrado
+        function quadrado(lado) {
+            return lado * lado;
+        }
+
+        // Função 2 - Perímetro do triângulo
+        function triangulo(l1, l2, l3) {
+            return l1 + l2 + l3;
+        }
+
+        // Função 3 - Área do círculo
+        function circulo(raio) {
+            return 3.14 * (raio * raio);
+        }
+
+        // Função 4 - Média de 4 notas
+        function nota(n1, n2, n3, n4) {
+            return (n1 + n2 + n3 + n4) / 4;
+        }
+
+        // Função 5 - Maior número
+        function maior(n1, n2, n3) {
+            if (n1 > n2 && n1 > n3) {
+                return n1;
+            } else if (n2 > n1 && n2 > n3) {
+                return n2;
+            } else {
+                return n3;
+            }
+        }
+
+        // Função 6 - Verifica se é positivo, negativo ou nulo
+        function positivo(num) {
+            if (num > 0) {
+                return "positivo";
+            } else if (num < 0) {
+                return "negativo";
+            } else {
+                return "nulo";
+            }
+        }
+
+        // Função 7 - Verifica se é primo
+        function primo(num) {
+            var divisores = 0;
+            for (var i = 1; i <= num; i++) {
+                if (num % i === 0) {
+                    divisores++;
+                }
+            }
+            if (divisores === 2) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        // MENU PRINCIPAL
+        var op = prompt(
+            "Menu:\n" +
+            "1 - Calcular a área de um quadrado\n" +
+            "2 - Calcular o perímetro de um triângulo\n" +
+            "3 - Calcular a área de um círculo\n" +
+            "4 - Calcular a média aritmética de 4 notas\n" +
+            "5 - Verificar o maior de 3 números\n" +
+            "6 - Verificar se o número é positivo, negativo ou nulo\n" +
+            "7 - Verificar se o número é primo\n" +
+            "8 - Sair"
+        );
+
+        switch (op) {
+            case "1":
+                var n1 = parseFloat(prompt("Digite o lado do quadrado:"));
+                alert("A área do quadrado é: " + quadrado(n1));
+                break;
+
+            case "2":
+                var a = parseFloat(prompt("Digite o primeiro lado:"));
+                var b = parseFloat(prompt("Digite o segundo lado:"));
+                var c = parseFloat(prompt("Digite o terceiro lado:"));
+                alert("O perímetro do triângulo é: " + triangulo(a, b, c));
+                break;
+
+            case "3":
+                var raio = parseFloat(prompt("Digite o raio do círculo:"));
+                alert("A área do círculo é: " + circulo(raio));
+                break;
+
+            case "4":
+                var n1 = parseFloat(prompt("Digite a primeira nota:"));
+                var n2 = parseFloat(prompt("Digite a segunda nota:"));
+                var n3 = parseFloat(prompt("Digite a terceira nota:"));
+                var n4 = parseFloat(prompt("Digite a quarta nota:"));
+                alert("A média das notas é: " + nota(n1, n2, n3, n4));
+                break;
+
+            case "5":
+                var n1 = parseFloat(prompt("Digite o primeiro número:"));
+                var n2 = parseFloat(prompt("Digite o segundo número:"));
+                var n3 = parseFloat(prompt("Digite o terceiro número:"));
+                alert("O maior número é: " + maior(n1, n2, n3));
+                break;
+
+            case "6":
+                var num = parseFloat(prompt("Digite um número:"));
+                alert("O número é " + positivo(num));
+                break;
+
+            case "7":
+                var num = parseInt(prompt("Digite um número:"));
+                if (primo(num)) {
+                    alert("O número " + num + " é primo!");
+                } else {
+                    alert("O número " + num + " não é primo!");
+                }
+                break;
+
+            case "8":
+                alert("Você saiu do programa.");
+                break;
+
+            default:
+                alert("Opção inválida!");
+        }
+
+    </script>
+</body>
+
+</html>

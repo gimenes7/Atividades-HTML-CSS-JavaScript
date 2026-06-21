@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Ler 10 Números</title>
+</head>
+<body>
+    <script>
+        var numeros = [];
+        var i = 0;
+
+        while (i < 10) {
+            var num = parseInt(prompt("Digite o " + (i+1) + "º número:"));
+            numeros.push(num);
+            i++;
+        }
+
+        console.log("Números digitados:", numeros);
+    </script>
+</body>
+</html>
